@@ -4,22 +4,22 @@
 # Model-specific configurations
 model_configs:
   dfine:
-    imgsz: 640
+    imgsz: 1024
 
 # Class-specific configurations
 class_specific_configs:
   truck:
-    imgsz: 640
+    imgsz: 1024
   bus:
-    imgsz: 640
+    imgsz: 1024
   bike:
-    imgsz: 640
+    imgsz: 1024
   pedestrian:
-    imgsz: 640
+    imgsz: 1024
   motorcycle:
-    imgsz: 640
+    imgsz: 1024
   bicycle:
-    imgsz: 640
+    imgsz: 1024
 
 # COCO class mapping (adjust based on your dataset)
 class_mapping:
@@ -31,9 +31,7 @@ class_mapping:
 
 # Confidence thresholds for DFINE models
 dfine_thresholds_config:
-  # Thresholds for 640x640 DFINE models
-  # Index order: bus, bike, car, pedestrian, truck (based on class_mapping)
-  640: [0.8, 0.8, 0.7, 0.8, 0.7]
+  # Thresholds for 1024x1024 DFINE models
   # Example thresholds for a 1024x1024 DFINE model (adjust as needed)
   1024: [0.8, 0.8, 0.8, 0.7, 0.7]
   
