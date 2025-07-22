@@ -4,7 +4,7 @@ ICCV challenge 2025
 [fish-eye-demo.webm](https://github.com/user-attachments/assets/7ca4a06a-4304-4047-b3ab-bd5c720ba268)
 
 
-## 📊 Evaluation Metrics
+## 📊 Evaluation Metrics (Evaluate from NVIDIA AI CHALLENGE 2025)
 
 | AP<sub>0.5:0.95</sub> | AP<sub>0.5</sub> | AP<sub>S</sub> | AP<sub>M</sub> | AP<sub>L</sub> | F1 Score |
 |------------------------|------------------|----------------|----------------|----------------|----------|
