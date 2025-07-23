@@ -120,7 +120,6 @@ if RUNTIME == 'TRT':
                 boxes = output["boxes"][0]
                 scores = output["scores"][0]
                 return [boxes, scores, labels]
-
 elif RUNTIME == 'ONNX':
     import onnxruntime as ort
     print (ort.get_device())
@@ -201,10 +200,8 @@ elif RUNTIME == 'ONNX':
             labels = torch.from_numpy(labels).to(device)
             
             return [boxes, scores, labels]
-
 else:
     raise ValueError('Runtime not found, please update "RUNTIME" var. Supported: TRT, ONNX')
-
 
 class ModelEnsembleRouter:
     def __init__(self, models_folder, max_workers=4, config_path: str = '../config/router.yaml'):
@@ -225,7 +222,7 @@ class ModelEnsembleRouter:
         # Confidence thresholds for DFINE
         self.dfine_thresholds_config = self.config['dfine_thresholds_config']
         
-        print(f"🚀 Initialized DFINE-only ensemble router with {RUNTIME} runtime")
+        print(f"Initialized DFINE-only ensemble router with {RUNTIME} runtime")
         
     def load_config(self, config_path: str) -> Dict[str, Any]:
         """Load configuration from YAML file."""
@@ -290,7 +287,7 @@ class ModelEnsembleRouter:
                         input_size_val = parsed_size
                 
                 input_size_tuple = (input_size_val, input_size_val)
-                print(f"  📄 Loading DFINE model: {model_file} with input size {input_size_tuple}")
+                print(f"  Loading DFINE model: {model_file} with input size {input_size_tuple}")
                 
                 if RUNTIME == 'TRT':
                     model = TRTInference(
@@ -309,15 +306,15 @@ class ModelEnsembleRouter:
                 
                 self.dfine_models.append(model)
                 loaded_count += 1
-                print(f"    ✅ Successfully loaded")
+                print(f"    Successfully loaded")
             
             except Exception as e:
-                print(f"    ❌ Warning: Could not load model {model_file}: {e}")
+                print(f"     Could not load model {model_file}: {e}")
 
         if loaded_count == 0:
             raise ValueError("No models could be loaded successfully")
                 
-        print(f"\n🎯 Successfully loaded {loaded_count} DFINE models using {RUNTIME} runtime")
+        print(f"\nSuccessfully loaded {loaded_count} DFINE models using {RUNTIME} runtime")
         return loaded_count
         
     def predict_single_model(self, model, img, model_type, class_name=None):
@@ -525,15 +522,17 @@ class ModelEnsembleRouter:
             )
         
         final_detections = final_boxes.shape[0] if final_boxes.numel() > 0 else 0
-        print(f"   🎯 Final ensemble result: {final_detections} objects")
-        
         # Convert to CPU lists for compatibility
         if final_detections > 0:
+            print(f"   🎯 Final ensemble result: {final_detections} objects")
             return [
                 final_boxes.cpu().tolist(), 
                 final_scores.cpu().tolist(), 
                 final_classes.cpu().tolist()
             ]
+            
+        
+
         else:
             return [[], [], []]
     

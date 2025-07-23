@@ -65,7 +65,8 @@ async def process_images(router, image_files, config):
         if img is None:
             print(f"Failed to read {path}")
             continue
-
+        start = time.time()
+        
         orig_h, orig_w = img.shape[:2]
 
         if resize_dims:
@@ -74,7 +75,6 @@ async def process_images(router, image_files, config):
         else:
             new_w, new_h = orig_w, orig_h
 
-        start = time.time()
 
         tensor = preprocess_image(img)
         result = await router.predict_ensemble(path, tensor)

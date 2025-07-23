@@ -1,7 +1,7 @@
 import torch
 import os
 
-RUNTIME = 'ONNX'
+RUNTIME = 'TRT'
 
 def get_image_Id(img_name):
     img_name = img_name.split(".png")[0]

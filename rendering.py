@@ -39,9 +39,45 @@ def scale_bbox_to_image(bbox, original_size, target_size):
     
     return [scaled_x1, scaled_y1, scaled_width, scaled_height]
 
+def get_class_color(category_id):
+    """
+    Get color and class name for a specific category ID
+    Returns (BGR color tuple, class name) for OpenCV
+    
+    Classes:
+    0: Bus
+    1: Bike  
+    2: Car
+    3: Pedestrian
+    4: Truck
+    """
+    # Class names mapping
+    class_names = {
+        0: "Bus",
+        1: "Bike", 
+        2: "Car",
+        3: "Pedestrian",
+        4: "Truck"
+    }
+    
+    # Predefined colors for the 5 classes (BGR format for OpenCV)
+    colors = {
+        0: (255, 255,0 ),      # Orange - Bus
+        1: (0, 200, 0),        # Green - Bike
+        2: (255, 0, 0),        # Blue - Car
+        3: (0, 255, 255),      # Yellow - Pedestrian
+        4: (0, 0, 255),        # Red - Truck
+    }
+    
+    # Return color and class name if category_id is valid, otherwise return white and unknown
+    if category_id in colors:
+        return colors[category_id], class_names[category_id]
+    else:
+        return (255, 255, 255), f"Unknown_{category_id}"
+
 def draw_detections_on_image(image, detections, detection_image_size=None):
     """
-    Draw bounding boxes and labels on image
+    Draw bounding boxes and labels on image with colors for each class
     detection_image_size: (width, height) of the image used for creating detections
                          If None, assumes detections are already in correct scale
     """
@@ -54,8 +90,14 @@ def draw_detections_on_image(image, detections, detection_image_size=None):
     
     for detection in detections:
         bbox = detection['bbox']
+        category_id = detection['category_id']
+        
+        # Get color and class name for this category
+        color, class_name = get_class_color(category_id)
         
         # Scale bbox if detection was made on different image size
+        if detection_image_size is not None:
+            bbox = scale_bbox_to_image(bbox, detection_image_size, current_image_size)
         
         x1, y1, width, height = bbox
         x2 = x1 + width
@@ -71,16 +113,28 @@ def draw_detections_on_image(image, detections, detection_image_size=None):
         if x2 <= x1 or y2 <= y1:
             continue
         
-        # Draw rectangle
-        cv2.rectangle(img_copy, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
+        # Draw rectangle with class-specific color
+        cv2.rectangle(img_copy, (int(x1), int(y1)), (int(x2), int(y2)), color, 2)
         
-        # Add label with category and score
-        label = f"Cat:{detection['category_id']} Score:{detection['score']:.2f}"
+        # Add label with class name and score
+        label = f"{class_name}: {detection['score']:.2f}"
+        
+        # Calculate label background size
+        label_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)[0]
         
         # Ensure label position is within image
         label_y = max(20, int(y1) - 10)
-        cv2.putText(img_copy, label, (int(x1), label_y), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+        label_x = int(x1)
+        
+        # Draw label background
+        cv2.rectangle(img_copy, 
+                     (label_x, label_y - label_size[1] - 5),
+                     (label_x + label_size[0] + 5, label_y + 5),
+                     color, -1)
+        
+        # Draw label text in white for better contrast
+        cv2.putText(img_copy, label, (label_x + 2, label_y), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
     
     return img_copy
 
