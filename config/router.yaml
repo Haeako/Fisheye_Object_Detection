@@ -4,24 +4,9 @@
 # Model-specific configurations
 model_configs:
   dfine:
-    imgsz: 640
-
-# Class-specific configurations
-class_specific_configs:
-  truck:
-    imgsz: 640
-  bus:
-    imgsz: 640
-  bike:
-    imgsz: 640
-  pedestrian:
-    imgsz: 640
-  motorcycle:
-    imgsz: 640
-  bicycle:
-    imgsz: 640
-
-# COCO class mapping (adjust based on your dataset)
+    imgsz: 1024
+runtime_engine: 'ONNX' # 'TRT' for tensorRT | 'ONNX' for onnxruntime
+# class mapping
 class_mapping:
   0: "bus"
   1: "bike"
@@ -29,11 +14,10 @@ class_mapping:
   3: "pedestrian"
   4: "truck"
 
-# Confidence thresholds for DFINE models
 dfine_thresholds_config:
-  # Thresholds for 640x640 DFINE models
-  # Example thresholds for a 640x640 DFINE model (adjust as needed)
-  640: [0.8, 0.8, 0.8, 0.7, 0.7]
+  # Thresholds for 1024x1024 DFINE models
+  # Example thresholds for a 1024x1024 DFINE model (adjust as needed)
+  1024: [0.8, 0.8, 0.8, 0.7, 0.7]
   
 # Threading configuration
 max_workers: 4

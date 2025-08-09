@@ -1,5 +1,5 @@
 data:
-  image_folder: "/home/nhannvt/python_ws/challenge_iccv_2025/data"              
+  image_folder: "/media/nhannvt/DATA/DOC/dataset/fisheye8k/"              
   output_json: "../results/predictions.json"
 
 models:
@@ -9,7 +9,7 @@ models:
 
 inference:
   use_ensemble: true                       # true: dùng ensemble, false: dùng mô hình đơn
-  resize_dimensions: [640, 640]          
+  resize_dimensions: [1024, 1024]          
   max_fps: 25.0                             # FPS tối đa dùng để chuẩn hóa
 
 logging:

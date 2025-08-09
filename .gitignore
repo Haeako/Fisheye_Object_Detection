@@ -3,4 +3,4 @@ results/
 run.bash
 src/__pycache__
 src/pycocotools_
-model/
+code.zip

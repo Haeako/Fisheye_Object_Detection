@@ -5,6 +5,7 @@ import argparse
 import cv2
 import yaml
 import asyncio
+from tqdm import tqdm
 
 from utils import preprocess_image, get_image_Id, scale_box, convert_box_to_xywh
 from model_router import ModelEnsembleRouter
@@ -53,20 +54,19 @@ def format_predictions(predictions):
     return formatted
 
 
-async def process_images(router, image_files, config):
+async def process_images(router:ModelEnsembleRouter, image_files:list[str], config):
     predictions = []
     resize_dims = config.get('inference.resize_dimensions')
 
     sum_time = 0
     max_fps = 25
 
-    for path in image_files:
+    for path in tqdm(image_files, desc="Evaluate dataset"):
         img = cv2.imread(path)
         if img is None:
             print(f"Failed to read {path}")
             continue
-        start = time.time()
-        
+                
         orig_h, orig_w = img.shape[:2]
 
         if resize_dims:
@@ -74,8 +74,7 @@ async def process_images(router, image_files, config):
             img = cv2.resize(img, (new_w, new_h))
         else:
             new_w, new_h = orig_w, orig_h
-
-
+        start = time.time()
         tensor = preprocess_image(img)
         result = await router.predict_ensemble(path, tensor)
 
@@ -93,7 +92,6 @@ async def process_images(router, image_files, config):
     print(f"Normalized FPS (max {max_fps}): {norm_fps:.4f}")
 
     return predictions
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -118,10 +116,10 @@ def main():
 
     result_json = format_predictions(predictions)
     output_path = config.get('data.output_json', 'output.json')
+
     with open(output_path, 'w') as f:
         json.dump(result_json, f, indent=2)
 
-    print(f"Saved predictions to {output_path}")
 
 
 if __name__ == '__main__':
