@@ -5,7 +5,7 @@
 model_configs:
   dfine:
     imgsz: 1024
-runtime_engine: 'ONNX' # 'TRT' for tensorRT | 'ONNX' for onnxruntime
+runtime_engine: 'TRT' # 'TRT' for tensorRT | 'ONNX' for onnxruntime
 # class mapping
 class_mapping:
   0: "bus"

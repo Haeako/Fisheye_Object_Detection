@@ -24,20 +24,20 @@ def build_engine(onnx_file_path, engine_file_path):
     profile = builder.create_optimization_profile()
 
     input_name = network.get_input(0).name
-    input_shape = network.get_input(0).shape  # e.g. [-1, 3, 640, 640]
+    input_shape = network.get_input(0).shape  # e.g. [-1, 3, 1024, 1024]
     print(f"{input_name} has input shape: {input_shape}")
 
     profile.set_shape(
         "images",
-        min = (1, 3, 640, 640),
-        opt = (1, 3, 640, 640),
-        max = (4, 3, 640, 640)
+        min = (1, 3, 1024, 1024),
+        opt = (1, 3, 1024, 1024),
+        max = (1, 3, 1024, 1024)
     )
     profile.set_shape(
         "orig_target_sizes",
         min = (1, 2),
         opt = (1, 2),
-        max = (4,2)
+        max = (1,2)
     )
     config.add_optimization_profile(profile)
 

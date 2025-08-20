@@ -71,12 +71,11 @@ async def process_images(router:ModelEnsembleRouter, image_files:list[str], conf
 
         if resize_dims:
             new_w, new_h = resize_dims
-            img = cv2.resize(img, (new_w, new_h))
         else:
             new_w, new_h = orig_w, orig_h
         start = time.time()
-        tensor = preprocess_image(img)
-        result = await router.predict_ensemble(path, tensor)
+
+        result = await router.predict_ensemble(path, img)
 
         end = time.time()
         elapsed = end - start

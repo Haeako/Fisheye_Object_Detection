@@ -1,5 +1,5 @@
 data:
-  image_folder: "/media/nhannvt/DATA/DOC/dataset/fisheye8k/"              
+  image_folder: "/media/nhannvt/DATA/DOC/dataset/fisheye1k"              
   output_json: "../results/predictions.json"
 
 models:
