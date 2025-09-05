@@ -1,7 +1,3 @@
-Dưới đây mình đã chỉnh lại README của bạn cho **trang nhã, gọn gàng và chuyên nghiệp hơn**, giữ tính kỹ thuật nhưng văn phong nhẹ nhàng, phù hợp khi để trên GitHub hoặc nộp challenge:
-
----
-
 # 🚗 Road Object Detection in Fish-Eye Cameras
 
 [🎥 Demo Video](https://github.com/user-attachments/assets/7ca4a06a-4304-4047-b3ab-bd5c720ba268)
