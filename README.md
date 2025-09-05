@@ -29,8 +29,7 @@
 
 ## ⚡ Inference Speed on Jetson AGX Xavier (30W ALL, single `.engine`)
 
-Results for FP32 are reported in ICCV 2025 evaluation.
-FP16 results are shown here for reference only.
+Accuracy for the FP32 model is reported based on the ICCV 2025 evaluation. The FP16 model has not yet been evaluated for accuracy; results shown here reflect FPS only.
 
 | Model                         | FPS   | Normalized (max=25) |
 | ----------------------------- | ----- | ------------------- |
@@ -41,7 +40,7 @@ FP16 results are shown here for reference only.
 
 ## 📥 Pretrained Weights
 
-⚠️ FP16-trained weights are currently not available.
+*FP16-trained weights are currently not available.*
 
 | Model (FP32)                     | 640×640 Weights                                                                                  | 1024×1024 Weights                                                                                               |
 | -------------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
