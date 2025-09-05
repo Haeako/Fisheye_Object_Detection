@@ -1,6 +1,2 @@
-numpy==1.26.4
-torch==2.7.1
-torchvision==0.22.1
-ensemble-boxes==1.0.9
-onnxruntime-gpu==1.22.0
-10.12.0.36
+onnxruntime
+onnx

@@ -1,21 +1,41 @@
 data:
   image_folder: "/media/nhannvt/DATA/DOC/dataset/fisheye1k"              
   output_json: "../results/predictions.json"
-
 models:
   models_folder: "../model"          
-  single_model_path: "../model/fisheye8k.onnx"      
-  max_workers: 8                            
+  max_workers: 4                            
+model_configs:
+  dfine:
+    imgsz: 640
 
 inference:
-  use_ensemble: true                       # true: dùng ensemble, false: dùng mô hình đơn
-  resize_dimensions: [1024, 1024]          
-  max_fps: 25.0                             # FPS tối đa dùng để chuẩn hóa
-
-logging:
-  show_performance_stats: true              # Hiện thống kê hiệu năng
-  show_detailed_errors: true                # In lỗi chi tiết khi inference
+  use_ensemble: true                      
+  resize_dimensions: [640, 640]          
+  max_fps: 25.0                             # FPS for normalization
 
 output:
-  use_filename_as_id: true                  # Dùng tên file làm ID ảnh khi xuất JSON
-  indent_json: 2                            # Thụt dòng trong JSON xuất ra
+  use_filename_as_id: true                  
+  indent_json: 2                            
+
+# Model Ensemble Router Configuration
+# This configuration file defines all model settings, thresholds, and class mappings
+
+# Model-specific configurations
+
+
+# COCO class mapping (adjust based on your dataset)
+class_mapping:
+  0: "bus"
+  1: "bike"
+  2: "car"
+  3: "pedestrian"
+  4: "truck"
+
+# Confidence thresholds for DFINE models
+dfine_thresholds_config:
+  # Thresholds for 640x640 DFINE models
+  # Example thresholds for a 640x640 DFINE model (adjust as needed)
+  640: [0.8, 0.8, 0.8, 0.7, 0.7]
+  
+# Threading configuration
+max_workers: 4
