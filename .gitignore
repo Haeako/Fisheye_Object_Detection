@@ -1,9 +1,1 @@
-data/
-results/
-run.bash
-src/__pycache__
-src/pycocotools_
-code.zip
-requirement.txt
-.gitignore
-tools/predictions.json
+.vscode
