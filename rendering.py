@@ -262,8 +262,8 @@ def process_camera_data(json_file_path, images_folder_path, output_folder=None, 
 
 def main():
     parser = argparse.ArgumentParser(description='Render camera videos with detections')
-    parser.add_argument('json_file', help='Path to JSON file with detections')
-    parser.add_argument('images_folder', help='Path to folder containing PNG images')
+    parser.add_argument('json_file', default='/home/nhannvt/challenge_iccv_2025/results/predictions.json', help='Path to JSON file with detections')
+    parser.add_argument('images_folder', default='/media/nhannvt/DATA/DOC/dataset/fisheye1k', help='Path to folder containing PNG images')
     parser.add_argument('--output', '-o', help='Output folder for rendered videos')
     parser.add_argument('--fps', type=int, default=25, help='Target FPS for output videos (default: 25)')
     parser.add_argument('--detection-width', type=int, help='Width of images used for detection')
