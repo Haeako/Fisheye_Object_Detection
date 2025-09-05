@@ -1,8 +1,6 @@
-# 🚗 Road Object Detection in Fish-Eye Cameras (ICCV Challenge 2025)
+## 🚗 Road Object Detection in Fish-Eye Cameras (ICCV Challenge 2025)
 
 [fish-eye-demo.webm](https://github.com/user-attachments/assets/7ca4a06a-4304-4047-b3ab-bd5c720ba268)
-
-<sub>Inference result on Fisheye1K using 640x640_fisheye8k+visdra.engine (FP32)</sub>
 
 ---
 
@@ -57,3 +55,4 @@ trtexec \
   --optShapes=images:1x3x640x640,orig_target_sizes:1x2 \
   --maxShapes=images:1x3x640x640,orig_target_sizes:1x2
 ```
+
