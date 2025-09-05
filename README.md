@@ -1,13 +1,18 @@
+<div align="center">
+
 # 🚗 Road Object Detection in Fish-Eye Cameras
 
-[🎥 Demo Video](https://github.com/user-attachments/assets/7ca4a06a-4304-4047-b3ab-bd5c720ba268)
+**[Hung quan](https://github.com/Hungquan5)** | **[Van Hoang](https://github.com/tranhoang77)** | **[My Kim](https://github.com/ntmkimm)** | **[Thien Nhan](https://github.com/Haeako)**
+</div>
 
+---
+
+[🎥 Demo Video](https://github.com/user-attachments/assets/7ca4a06a-4304-4047-b3ab-bd5c720ba268)
 *Inference result on **Fisheye1K** using `640x640_fisheye8k.engine` (FP32).*
 
 ---
 
 ## 👾 System Information
-
 * **Platform**: Jetson AGX Xavier (JetPack 5.1.2, L4T R35.4.1)
 * **TensorRT Version**: 8.5.0.2
 * **Torch Version**: 2.1.0 (`torch-2.1.0a0+41361538.nv23.06-cp38-cp38-linux_aarch64`)
@@ -19,7 +24,6 @@
 ---
 
 ## 📊 Evaluation Metrics (NVIDIA AI Challenge 2025)
-
 | Model                                                  | AP<sub>0.5:0.95</sub> | AP<sub>0.5</sub> | AP<sub>S</sub> | AP<sub>M</sub> | AP<sub>L</sub> | F1 Score |
 | ------------------------------------------------------ | --------------------- | ---------------- | -------------- | -------------- | -------------- | -------- |
 | **1024×1024\_fisheye8k + 1024×1024\_visdra\_m (best)** | 0.5238                | 0.7226           | 0.3369         | 0.6877         | 0.5925         | 0.6139   |
@@ -28,7 +32,6 @@
 ---
 
 ## ⚡ Inference Speed on Jetson AGX Xavier (30W ALL, single `.engine`)
-
 Accuracy for the FP32 model is reported based on the ICCV 2025 evaluation. The FP16 model has not yet been evaluated for accuracy; results shown here reflect FPS only.
 
 | Model                         | FPS   | Normalized (max=25) |
@@ -39,7 +42,6 @@ Accuracy for the FP32 model is reported based on the ICCV 2025 evaluation. The F
 ---
 
 ## 📥 Pretrained Weights
-
 *FP16-trained weights are currently not available.*
 
 | Model (FP32)                     | 640×640 Weights                                                                                  | 1024×1024 Weights                                                                                               |
@@ -50,7 +52,6 @@ Accuracy for the FP32 model is reported based on the ICCV 2025 evaluation. The F
 ---
 
 ## 🛠️ TensorRT Engine Build
-
 We use the following command to build `.engine` files:
 
 > ⚠️ Note: Using `--fp16` or `--int8` on FP32-trained models may cause numerical overflow.
@@ -70,8 +71,4 @@ trtexec \
 ---
 
 ## ❤️ Acknowledgement
-
 This work is built upon the amazing [D-FINE](https://github.com/Peterande/D-FINE) project.
----
-
-
