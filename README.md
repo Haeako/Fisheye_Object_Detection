@@ -2,7 +2,7 @@
 
 # 🚗 Road Object Detection in Fish-Eye Cameras
 
-**[Hung quan](https://github.com/Hungquan5)** | **[Van Hoang](https://github.com/tranhoang77)** | **[My Kim](https://github.com/ntmkimm)** | **[Thien Nhan](https://github.com/Haeako)**
+**[Hung quan](https://github.com/Hungquan5)** | **[Van Hoang](https://github.com/tranhoang77)** | **[My Kim](https://github.com/ntmkimm)** | **[Thien Nhan](https://github.com/Haeako)** | **[Thanh Dat](https://github.com/datheobc123)**
 </div>
 
 ---
@@ -73,5 +73,6 @@ trtexec \
 
 ## ❤️ Acknowledgement
 This work is built upon the amazing [D-FINE](https://github.com/Peterande/D-FINE) project.
+
 
 
