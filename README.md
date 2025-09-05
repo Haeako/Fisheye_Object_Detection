@@ -6,7 +6,7 @@ Dưới đây mình đã chỉnh lại README của bạn cho **trang nhã, gọ
 
 [🎥 Demo Video](https://github.com/user-attachments/assets/7ca4a06a-4304-4047-b3ab-bd5c720ba268)
 
-*Inference result on **Fisheye1K** using `640x640_fisheye8k+visdra.engine` (FP32).*
+*Inference result on **Fisheye1K** using `640x640_fisheye8k.engine` (FP32).*
 
 ---
 
@@ -78,3 +78,4 @@ trtexec \
 
 This work is built upon the amazing [D-FINE](https://github.com/Peterande/D-FINE) project.
 ---
+
