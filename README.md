@@ -11,7 +11,7 @@
 * **Platform**: Jetson AGX Xavier (JetPack 5.1.2, L4T R35.4.1)
 * **TensorRT Version**: 8.5.0.2
 * **Torch Version**: 2.1.0 (`torch-2.1.0a0+41361538.nv23.06-cp38-cp38-linux_aarch64`)
-* **Torchvision Version**: –
+* **Torchvision Version**: v0.16.1
 * **Input Resolution**: 1024×1024 or 640×640
 
 > 🔧 You can adjust parameters via the configuration file: `config/config.yaml`.
@@ -74,4 +74,5 @@ trtexec \
 
 This work is built upon the amazing [D-FINE](https://github.com/Peterande/D-FINE) project.
 ---
+
 
