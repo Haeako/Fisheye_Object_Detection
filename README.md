@@ -9,7 +9,7 @@
 
 [🎥 Demo Video](https://github.com/user-attachments/assets/7ca4a06a-4304-4047-b3ab-bd5c720ba268)
 
-*Inference result on **Fisheye1K** using `640x640_fisheye8k.engine` (FP32).*
+*Inference result samples on **Fisheye1K** using `640x640_fisheye8k.engine` (FP32).*
 
 ---
 
@@ -73,4 +73,5 @@ trtexec \
 
 ## ❤️ Acknowledgement
 This work is built upon the amazing [D-FINE](https://github.com/Peterande/D-FINE) project.
+
 
